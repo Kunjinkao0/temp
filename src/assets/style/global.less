@@ -1,0 +1,790 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width                  : 100%;
+    height                 : 100%;
+    margin                 : 0;
+    padding                : 0;
+    font-size              : 14px;
+    background-color       : var(--color-bg-1);
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing : antialiased;
+}
+
+.echarts-tooltip-diy {
+    background: linear-gradient(304.17deg,
+            rgba(253, 254, 255, 0.6) -6.04%,
+            rgba(244, 247, 252, 0.6) 85.2%) !important;
+    border         : none !important;
+    backdrop-filter: blur(10px) !important;
+    /* Note        : backdrop-filter has minimal browser support */
+
+    border-radius: 6px !important;
+
+    .content-panel {
+        display        : flex;
+        justify-content: space-between;
+        padding        : 0 9px;
+        background     : rgba(255, 255, 255, 0.8);
+        width          : 164px;
+        height         : 32px;
+        line-height    : 32px;
+        box-shadow     : 6px 0px 20px rgba(34, 87, 188, 0.1);
+        border-radius  : 4px;
+        margin-bottom  : 4px;
+    }
+
+    .tooltip-title {
+        margin: 0 0 10px 0;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .tooltip-title,
+    .tooltip-value {
+        font-size  : 13px;
+        line-height: 15px;
+        display    : flex;
+        align-items: center;
+        text-align : right;
+        color      : #1d2129;
+        font-weight: bold;
+    }
+
+    .tooltip-item-icon {
+        display      : inline-block;
+        margin-right : 8px;
+        width        : 10px;
+        height       : 10px;
+        border-radius: 50%;
+    }
+}
+
+.general-card {
+    border-radius: 4px !important;
+    border       : 0 !important;
+
+    &>.arco-card-header {
+        height : auto;
+        padding: 20px;
+        border : 0;
+    }
+
+    &>.arco-card-body {
+        padding: 0 20px 20px 20px;
+    }
+}
+
+.split-line {
+    border-color: rgb(var(--gray-2));
+}
+
+.arco-table-cell {
+    .circle {
+        display         : inline-block;
+        margin-right    : 4px;
+        width           : 6px;
+        height          : 6px;
+        border-radius   : 50%;
+        background-color: rgb(var(--blue-6));
+
+        &.pass {
+            background-color: rgb(var(--green-6));
+        }
+    }
+}
+
+// drawer 抽屉公共样式，不能在单独页面deep修改
+.arco-drawer-body {
+    padding: 0;
+}
+
+.iotWaveModel .arco-modal-header {
+    border-bottom: 0px;
+}
+
+.iotWaveModel .arco-modal-body {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.iotVideoModel .arco-modal-header {
+    border-bottom: 0px;
+}
+
+.iotVideoModel .arco-modal-body {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.maintainLogModal .arco-modal-body {
+    padding: 0;
+}
+
+// tab 平均分样式及去掉灰色阴影
+.maintainLogModal .arco-tabs-nav-tab {
+    display: flex;
+    flex: 1;
+    background: linear-gradient(87.32deg, #165DFF 0%, #722ED1 100%);
+    padding-bottom: 24px;
+}
+
+.maintainLogModal .arco-tabs-nav-ink {
+    background-color: #FFFFFF;
+}
+
+.maintainLogModal .arco-tabs-nav-tab-list {
+    display: flex;
+    flex: 1;
+}
+
+.maintainLogModal .arco-tabs-tab {
+    display: flex;
+    flex: 1;
+}
+
+.maintainLogModal .arco-tabs-nav-type-line .arco-tabs-tab-title {
+    flex: 1;
+    text-align: center;
+    color: white;
+}
+
+.maintainLogModal .arco-tabs-nav-type-line .arco-tabs-tab:hover .arco-tabs-tab-title::before {
+    background-color:transparent;
+}
+
+// .maintainLogModal .arco-tabs-nav-type-line .arco-tabs-tab:hover .arco-tabs-tab-title::before {
+//     // background-color: white;
+// }
+
+.maintainLogModal .arco-tabs-content {
+    padding: 0 24px 16px 24px;
+    text-align: center;
+}
+
+.cu-flex {
+    display: flex;
+}
+
+.cu-flex1 {
+    flex: 1;
+    min-width: 0;
+}
+
+.cu-flex1_5 {
+    flex: 1.5;
+}
+
+.cu-flex2 {
+    flex: 2;
+}
+
+.cu-flex3 {
+    flex: 3;
+}
+
+.cu-flex-wrap {
+    flex-wrap: wrap;
+}
+
+.cu-flex-y {
+    display       : flex;
+    flex-direction: column;
+}
+
+/*
+	flex 变量命名规则 flex-主轴方向-主轴对齐方式-交叉轴对齐方式
+	即： flex-(flex-direction:row/column)-(justify-content)-(align-items)
+	默认居中对齐
+	缺少项用n代替 例： fx-n-center
+ */
+.cu-fx {
+    /* x轴 垂直水平居中 */
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+}
+
+.cu-fx-n-center {
+    /* x轴 垂直居中 */
+    display    : flex;
+    align-items: center;
+}
+
+.cu-fx-between-center {
+    /* x轴 垂直两端对齐 */
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+}
+
+.cu-fx-between-n {
+    /* x轴 两端对齐 */
+    display        : flex;
+    justify-content: space-between;
+}
+
+.cu-fx-around-center {
+    /* x轴 垂直平分对齐 */
+    display        : flex;
+    justify-content: space-around;
+    align-items    : center;
+}
+
+.cu-fx-start-center {
+    /* x轴 开头对齐 垂直居中 */
+    display        : flex;
+    justify-content: start;
+    align-items    : center;
+}
+
+.cu-fx-end-center {
+    /* x轴 尾部对齐 */
+    display        : flex;
+    justify-content: end;
+    align-items    : center;
+}
+
+.cu-fy {
+    /* y轴 垂直水平居中 */
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+    justify-content: center;
+}
+
+.cu-fy-n-center {
+    /* y轴 垂直居中对齐 */
+    display       : flex;
+    flex-direction: column;
+    align-items   : center;
+}
+
+.cu-fy-around-n {
+    /* y轴 平均分周围留白 */
+    display        : flex;
+    flex-direction : column;
+    justify-content: space-around;
+}
+
+.cu-fy-between-center {
+    /* y轴 垂直两端对齐 */
+    display        : flex;
+    flex-direction : column;
+    justify-content: space-between;
+    align-items    : center;
+}
+
+.cu-color-FFFFFF {
+    color: #FFFFFF;
+}
+.cu-fy-between-center-lr {
+    /* y轴 两端对齐 */
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+}
+.cu-color-165DFF {
+    color: #165DFF;
+}
+
+.cu-color-86909c {
+    color: #86909c;
+}
+
+.cu-color-F53F3F {
+    color: #F53F3F;
+}
+
+.cu-color-1D2129 {
+    color: #1D2129;
+}
+
+.cu-color-00B42A{
+    color: #00B42A
+}
+
+.cu-color-D9D9D9{
+    color: #D9D9D9
+}
+
+.cu-color-1D2129-54{
+    color: rgba(0, 0, 0, 0.54)
+} 
+
+.cu-color-1D2129-26{
+    color: rgba(0, 0, 0, 0.26)
+} 
+
+
+// 光标变成手型
+.cu-pointer {
+    cursor: pointer;
+}
+
+.cu-font10 {
+    font-size: 10px;
+}
+
+.cu-font12 {
+    font-size: 12px;
+}
+
+.cu-font14 {
+    font-size: 14px;
+}
+
+.cu-font16 {
+    font-size: 16px;
+}
+
+.cu-font18 {
+    font-size: 18px;
+}
+
+.cu-font20 {
+    font-size: 20px;
+}
+
+.cu-font22 {
+    font-size: 22px;
+}
+
+.cu-font24 {
+    font-size: 24px;
+}
+
+.cu-font36 {
+    font-size: 36px;
+}
+
+.cu-font72 {
+    font-size: 72px;
+}
+
+.cu-font44 {
+    font-size: 44px;
+}
+.cu-fontWeight200 {
+    font-weight: 200;
+}
+
+.cu-fontWeight400 {
+    font-weight: 400;
+}
+.cu-fontWeight600 {
+    font-weight: 600;
+}
+
+.cu-fontWeight700 {
+    font-weight: 700;
+}
+
+.cu-fontCenter{
+    text-align: center;
+}
+
+.cu-mart12 {
+    margin-top: 12px;
+}
+
+.cu-mart16 {
+    margin-top: 16px;
+}
+
+.cu-mart24 {
+    margin-top: 24px;
+}
+
+.cu-mart28 {
+    margin-top: 28px;
+}
+
+.cu-mart32 {
+    margin-top: 32px;
+}
+
+.cu-mart48 {
+    margin-top: 48px;
+}
+
+.cu-marr8 {
+    margin-right: 8px;
+}
+
+.cu-marr16 {
+    margin-right: 16px;
+}
+
+.cu-marb8 {
+    margin-bottom: 8px;
+}
+
+.cu-marb16 {
+    margin-bottom: 16px;
+}
+
+.cu-marl4 {
+    margin-left: 4px;
+}
+
+.cu-marl8 {
+    margin-left: 8px;
+}
+
+.cu-marl16 {
+    margin-left: 16px;
+}
+
+.cu-marl24 {
+    margin-left: 24px;
+}
+
+.cu-marlr4 {
+    margin-left : 4px;
+    margin-right: 4px;
+}
+
+.cu-marlr16 {
+    margin-left : 16px;
+    margin-right: 16px;
+}
+
+.cu-marlr24 {
+    margin-left : 24px;
+    margin-right: 24px;
+}
+
+.cu-marlr48 {
+    margin-left : 48px;
+    margin-right: 48px;
+}
+
+.cu-martb16 {
+    margin-top   : 16px;
+    margin-bottom: 16px;
+}
+
+.cu-padtb4{
+    padding: 4px 0px;
+}
+
+.cu-padtb16{
+    padding: 16px 0px;
+}
+
+.cu-padt16 {
+    padding-top: 16px
+}
+
+.cu-padt24 {
+    padding-top: 24px
+}
+
+.cu-padtop24 {
+    padding-top: 24px;
+}
+
+.cu-padt32 {
+    padding-top: 32px;
+}
+
+.cu-padb16 {
+    padding-bottom: 16px
+}
+
+.cu-padb24 {
+    padding-bottom: 24px;
+}
+
+.cu-padlr16 {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.cu-padlr24 {
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.cu-padb20{
+    padding-bottom: 20px;
+}
+
+.cu-padt24 {
+    padding: 24px;
+}
+
+.cu-padlr15 {
+    padding: 0px 16px 20px 16px !important;
+}
+
+.cu-padlr20 {
+    padding: 20px 0px !important;
+}
+
+.cu-pad20 {
+    padding: 20px
+}
+
+.cu-hei24 {
+    height: 24px;
+}
+
+.cu-link-vertical {
+    display: inline-block;
+    min-width: 1px;
+    max-width: 1px;
+    height: 1em;
+    vertical-align: middle;
+    border-left: 4px solid #165DFF;
+    border-radius: 10px;
+}
+
+.text_black {
+    margin-left: 5px;
+    color: #1d2129;
+    font-size: large;
+    font-weight: bold;
+}
+
+.maintenantice-ststistics .arco-modal-simple {
+    padding: 0 0 24px 0;
+}
+
+.maintenantice-ststistics .container{
+    border-bottom: 1px solid #ebebeb;
+}
+
+.maintenantice-ststistics .arco-modal-footer{
+    margin-top: 15px;
+}
+
+.cu-bgcolor-3491FA{
+    background-color:#3491FA
+}
+
+.cu-bgcolor-00B42A{
+    background-color: #00B42A
+}
+
+.cu-bgcolor-A871E3 {
+    background-color:#A871E3
+}
+
+.cu-bgcolor-F98981 {
+    background-color:#F98981
+}
+
+.cu-bgcolor-FFFFFF{
+    background:#FFFFFF !important
+}
+
+.cu-bgcolor-7BC0FC-3491FA{
+    background:linear-gradient(180deg, #7BC0FC 0%, #3491FA 100%);
+}
+
+.cu-bgcolor-4CD263-00B42A{
+    background:linear-gradient(180deg, #4CD263 0%, #00B42A 100%)
+}
+
+.cu-bgcolor-A871E3-722ED1{
+    background:linear-gradient(180deg, #A871E3 0%, #722ED1 100%);
+}
+
+.cu-bgcolor-F98981-F53F3F{
+    background:linear-gradient(180deg, #F98981 0%, #F53F3F 100%);
+}
+
+.cu-bgcolor-F98981-01 {
+    background-color:rgba(245, 63, 63, 0.1)
+}
+
+.cu-bgcolor-00B42A-01{
+    background-color: rgba(0, 180, 42, 0.1)
+}
+
+.cu-radius50{
+    border-radius: 50px;
+}
+
+.cu-div-padding5{
+    padding: 3px 10px;
+}
+
+.maintenantics-color-one {
+    background: 'url(@/assets/images/maintenantics/cardbackgroud.png) no-repeat,linear-gradient(180deg, #F2F9FE 0%, #E6F4FE 100%)' !important;
+    background-size: 100%;
+}
+
+.maintenantics-color-two {
+    background: 'url(@/assets/images/maintenantics/cardbackgroud.png) no-repeat,linear-gradient(180deg, #F5FEF2 0%, #E6FEEE 100%)';
+    background-size: 100%;
+}
+
+.maintenantics-color-three {
+    background: 'url(@/assets/images/maintenantics/cardbackgroud.png) no-repeat,linear-gradient(180deg, #F7F7FF 0%, #ECECFF 100%)' !important;
+    background-size: 100%;
+}
+.maintenantics-color-four {
+    background: 'url(@/assets/images/maintenantics/cardbackgroud.png) no-repeat,linear-gradient(180deg, #FFF7F7 0%, #FFECEC 100%)';
+    background-size: 100%;
+}
+
+.cu-fy-between-center-lr .arco-statistic-content .arco-statistic-value-integer{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.statistical .arco-statistic-content .arco-statistic-value-integer{
+    font-size: 22px;
+}
+
+.up-icon {
+    color: rgb(var(--red-6));
+}
+.down-icon {
+    color: rgb(var(--green-6));
+}
+
+.cu-font-nexa-bold{
+    font-family: 'NEXA BOLD';
+}
+
+.no-data{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.table-nodata{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.no-video{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-process1{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(270deg, #F7F7FF 0%, #ECECFF 100%);
+    padding: 20px 16px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.main-process2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(270deg, #F2F9FE 0%, #E6F4FE 100.94%);
+    padding: 20px 16px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.width_bfb100{
+    width:100%
+}
+
+.input-search{
+    background-color: #F2F3F5;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    // border-color: rgb(235 230 230)
+}
+
+.tree-title-img{
+    vertical-align:bottom
+}
+
+.table-operate-btn{
+    height:26px
+}
+
+.arco-virtual-list::-webkit-scrollbar{
+    width: 10px;
+ }
+
+ .tree-model .arco-modal-wrapper{
+    padding-left: 240px;
+    text-align: left;
+ }
+
+ .tree-model .arco-modal-mask{
+    background-color:#00000000
+ }
+
+ .tree-model .arco-modal-simple{
+    padding: 0 20px 20px;
+    box-shadow: 0px 8px 16px rgba(12, 0, 51, 0.1);
+    border-radius: 4px;
+ }
+
+ .tree-icon:hover{
+    content: url('@/assets/images/tree/tree-open2.png');;
+ }
+
+ .card-list{
+    border: 0 !important;
+ }
+
+ .tree_div {
+    position: absolute;
+    z-index: 98;
+    background: #FFFFFF;
+    width: 400px;
+    padding: 20px;
+    margin-top: 28px;
+    box-shadow: 0px 8px 16px rgba(12, 0, 51, 0.1);
+    border-radius: 4px;
+ }
+
+ .trigger-popup-css {
+    left:240px !important
+ }
+
+ .arco-menu-vertical .arco-menu-inner{
+    padding: 0 0;
+ }
+
+ .font-color-FFFFFF{
+    color: #FFFFFF;
+ }
+
+ .table-header-cell{
+    background:#E5E6EB;
+ }
+
+ .title{
+    margin:0;
+    font-size: 16px;
+    text-align: center;
+    height: 48px;
+    line-height: 48px;
+    color: #FFFFFF;
+    background: #001D39;
+}
+
+.arco-menu-dark .arco-menu-collapse-button{
+    background-color: #001529 !important;
+}
+
+.arco-menu-dark .arco-menu-inline-header.arco-menu-selected .arco-icon, .arco-menu-dark .arco-menu-inline-header.arco-menu-selected .arco-menu-icon{
+    color: #FFFFFF;
+}
